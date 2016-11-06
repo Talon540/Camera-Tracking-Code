@@ -123,6 +123,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
                 #calc dx
                 dx = int(image.shape[1]/2) - cx
+                #This distance is not accurate, so do not use it for alignment. Instead use an Ultrasonic sensor from the RIO's side
                 if(int(image.shape[1]/2)>(x+int(w/2)-10)) and (int(image.shape[1]/2)<x+int(w/2) + 10):
                        print("Aligned with target, sir.",dx)
                        align = 1
