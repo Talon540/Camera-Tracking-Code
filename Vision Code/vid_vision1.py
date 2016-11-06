@@ -11,11 +11,12 @@ import time as t
 import cv2
 #We used OpenCV 3.0.0
 
-NetworkTable.setIPAddress("roborio-540-frc")
+NetworkTable.setIPAddress("10.5.40.2")
 NetworkTable.setClientMode()
 print NetworkTable.port
 sd = NetworkTable.getTable("cameratrack")
-#Retrieves NetworkTable from RoboRIO
+#Retrieves NetworkTable from RoboRIO, please change the IP address to that which your RIO is using
+#Change the table name to that which you are using
 
 camera = PiCamera()
 camera.resolution = (320, 240)
@@ -72,7 +73,7 @@ def distance_to_camera(knownWidth, focalLength, perWidth):
                 return -1.2172*perWidth +238.35#1.0*(knownWidth * focalLength) / perWidth
         else:
                 return -1
-#The Distance Calculation is innaccurate, since it depends on a straight 90 degree
+#The Distance Calculation is inaccurate, since it depends on a straight 90 degree
 #view of the goal, which is impossible during the match.
 def get_midpoint(cnt):
         M = cv2.moments(cnt)
